@@ -9,16 +9,16 @@ Package.onUse(function(api) {
   api.versionsFrom(['METEOR@2.4', 'METEOR@3.0']);
 
   api.use([
-    'templating',
+    'templating@1.4.4',
   ], 'client');
 
   api.use([
-    'communitypackages:core',
+    'communitypackages:core@2.0.0',
   ], ['client', 'server']);
 
   // Requires all routing packages loads before this asking for weak dependencies.
-  api.use('communitypackages:flow-routing', ['client', 'server'], {weak: true});
-  api.use('communitypackages:iron-routing', ['client', 'server'], {weak: true});
+  api.use('communitypackages:flow-routing@2.0.0', ['client', 'server'], {weak: true});
+  api.use('communitypackages:iron-routing@2.0.0', ['client', 'server'], {weak: true});
 
   api.imply([
     'communitypackages:core',
