@@ -1,31 +1,30 @@
 Package.describe({
   summary: 'Accounts Templates styled for Twitter Bootstrap.',
-  version: '1.14.2',
-  name: 'useraccounts:bootstrap',
+  version: '2.0.0',
+  name: 'communitypackages:bootstrap',
   git: 'https://github.com/meteor-useraccounts/bootstrap.git',
 });
 
-Package.on_use(function(api, where) {
-  api.versionsFrom('METEOR@1.0');
+Package.onUse(function(api) {
+  api.versionsFrom(['METEOR@2.4', 'METEOR@3.0']);
 
   api.use([
     'templating',
-    'underscore',
   ], 'client');
 
   api.use([
-    'useraccounts:core',
+    'communitypackages:core',
   ], ['client', 'server']);
 
   // Requires all routing packages loads before this asking for weak dependencies.
-  api.use('useraccounts:flow-routing@1.14.2', ['client', 'server'], {weak: true});
-  api.use('useraccounts:iron-routing@1.14.2', ['client', 'server'], {weak: true});
+  api.use('communitypackages:flow-routing', ['client', 'server'], {weak: true});
+  api.use('communitypackages:iron-routing', ['client', 'server'], {weak: true});
 
   api.imply([
-    'useraccounts:core@1.14.2',
+    'communitypackages:core',
   ], ['client', 'server']);
 
-  api.add_files([
+  api.addFiles([
     'lib/at_error.html',
     'lib/at_error.js',
     'lib/at_form.html',
@@ -67,10 +66,10 @@ Package.on_use(function(api, where) {
   ], ['client']);
 });
 
-Package.on_test(function(api) {
+Package.onTest(function(api) {
   api.use([
-    'useraccounts:bootstrap',
-    'useraccounts:core@1.14.2',
+    'communitypackages:bootstrap',
+    'communitypackages:core',
   ]);
 
   api.use([
@@ -79,7 +78,7 @@ Package.on_test(function(api) {
     'test-helpers'
   ], ['client', 'server']);
 
-  api.add_files([
+  api.addFiles([
     'tests/tests.js'
   ], ['client', 'server']);
 });
